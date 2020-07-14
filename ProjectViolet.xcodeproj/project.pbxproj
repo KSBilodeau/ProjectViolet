@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8694CF7224BB8FE1008B12BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8694CF7124BB8FE1008B12BD /* main.cpp */; };
 		8694CF8524BB91A7008B12BD /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8694CF8324BB91A7008B12BD /* application.cpp */; };
+		869E033A24BE589200B332D8 /* debugManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869E033824BE589200B332D8 /* debugManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,9 @@
 		8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = conanbuildinfo.xcconfig; sourceTree = "<group>"; };
 		8694CF8324BB91A7008B12BD /* application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
 		8694CF8424BB91A7008B12BD /* application.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = application.hpp; sourceTree = "<group>"; };
+		869E033824BE589200B332D8 /* debugManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = debugManager.cpp; sourceTree = "<group>"; };
+		869E033924BE589200B332D8 /* debugManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = debugManager.hpp; sourceTree = "<group>"; };
+		869E033B24BE5AC300B332D8 /* debugComponents.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = debugComponents.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				8694CF8324BB91A7008B12BD /* application.cpp */,
+				869E033824BE589200B332D8 /* debugManager.cpp */,
 				8694CF7124BB8FE1008B12BD /* main.cpp */,
 			);
 			name = sources;
@@ -107,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				8694CF8424BB91A7008B12BD /* application.hpp */,
+				869E033B24BE5AC300B332D8 /* debugComponents.hpp */,
+				869E033924BE589200B332D8 /* debugManager.hpp */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -170,6 +177,7 @@
 			files = (
 				8694CF8524BB91A7008B12BD /* application.cpp in Sources */,
 				8694CF7224BB8FE1008B12BD /* main.cpp in Sources */,
+				869E033A24BE589200B332D8 /* debugManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

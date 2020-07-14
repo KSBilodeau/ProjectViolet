@@ -13,21 +13,7 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#ifndef DEBUG
-#define ON_DEBUG(x) do { } while (0);
-#else
-#define ON_DEBUG(x) do { x } while (0);
-#endif
-
-enum MessageSeverity
-{
-    Information,
-    Warning,
-    SevereWarning,
-    Error,
-    SevereError,
-    IrrecoverableError
-};
+#include "debugComponents.hpp"
 
 class Application
 {

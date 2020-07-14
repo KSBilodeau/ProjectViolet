@@ -10,6 +10,7 @@
 #include <SDL_image.h>
 
 #include "application.hpp"
+#include "debugManager.hpp"
 
 Application::Application() : continueExecution(true), mRenderer(nullptr), mWindow(nullptr, SDL_DestroyWindow)
 {
@@ -30,6 +31,8 @@ void Application::free()
 bool Application::run()
 {
     bool runSuccess = true;
+    
+//    ON_DEBUG(DebugManager::startLoggingToFile();)
         
     if (!initLibraries())
     {
@@ -60,6 +63,8 @@ bool Application::run()
         SDL_RenderPresent(mRenderer.get());
         SDL_RenderClear(mRenderer.get());
     }
+    
+//    ON_DEBUG(DebugManager::stopLoggingToFile();)
     
     return runSuccess;
 }
