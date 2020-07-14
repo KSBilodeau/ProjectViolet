@@ -8,8 +8,14 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+#include "application.hpp"
+
+int main(int argc, const char * argv[])
+{
+    Application application;
+    
+    if (application.run())
+        return EXIT_SUCCESS;
+    else
+        return EXIT_FAILURE;
 }

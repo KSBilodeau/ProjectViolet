@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8694CF7224BB8FE1008B12BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8694CF7124BB8FE1008B12BD /* main.cpp */; };
+		8694CF8524BB91A7008B12BD /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8694CF8324BB91A7008B12BD /* application.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,14 @@
 /* Begin PBXFileReference section */
 		8694CF6E24BB8FE1008B12BD /* ProjectViolet */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProjectViolet; sourceTree = BUILT_PRODUCTS_DIR; };
 		8694CF7124BB8FE1008B12BD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8694CF7D24BB90AA008B12BD /* conanbuildinfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conanbuildinfo.txt; sourceTree = "<group>"; };
+		8694CF7E24BB90AA008B12BD /* graph_info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = graph_info.json; sourceTree = "<group>"; };
+		8694CF7F24BB90AA008B12BD /* conaninfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conaninfo.txt; sourceTree = "<group>"; };
+		8694CF8024BB90AA008B12BD /* conanFile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conanFile.txt; sourceTree = "<group>"; };
+		8694CF8124BB90AA008B12BD /* conan.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = conan.lock; sourceTree = "<group>"; };
+		8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = conanbuildinfo.xcconfig; sourceTree = "<group>"; };
+		8694CF8324BB91A7008B12BD /* application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = application.cpp; sourceTree = "<group>"; };
+		8694CF8424BB91A7008B12BD /* application.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = application.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +66,49 @@
 		8694CF7024BB8FE1008B12BD /* ProjectViolet */ = {
 			isa = PBXGroup;
 			children = (
-				8694CF7124BB8FE1008B12BD /* main.cpp */,
+				8694CF7B24BB9018008B12BD /* headers */,
+				8694CF7A24BB9011008B12BD /* sources */,
+				8694CF7924BB9009008B12BD /* resources */,
+				8694CF7824BB8FEC008B12BD /* conanFiles */,
 			);
 			path = ProjectViolet;
+			sourceTree = "<group>";
+		};
+		8694CF7824BB8FEC008B12BD /* conanFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8694CF8124BB90AA008B12BD /* conan.lock */,
+				8694CF7D24BB90AA008B12BD /* conanbuildinfo.txt */,
+				8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */,
+				8694CF8024BB90AA008B12BD /* conanFile.txt */,
+				8694CF7F24BB90AA008B12BD /* conaninfo.txt */,
+				8694CF7E24BB90AA008B12BD /* graph_info.json */,
+			);
+			path = conanFiles;
+			sourceTree = "<group>";
+		};
+		8694CF7924BB9009008B12BD /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		8694CF7A24BB9011008B12BD /* sources */ = {
+			isa = PBXGroup;
+			children = (
+				8694CF8324BB91A7008B12BD /* application.cpp */,
+				8694CF7124BB8FE1008B12BD /* main.cpp */,
+			);
+			name = sources;
+			sourceTree = "<group>";
+		};
+		8694CF7B24BB9018008B12BD /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				8694CF8424BB91A7008B12BD /* application.hpp */,
+			);
+			name = headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8694CF8524BB91A7008B12BD /* application.cpp in Sources */,
 				8694CF7224BB8FE1008B12BD /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +178,7 @@
 /* Begin XCBuildConfiguration section */
 		8694CF7324BB8FE1008B12BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -186,6 +237,7 @@
 		};
 		8694CF7424BB8FE1008B12BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -237,19 +289,22 @@
 		};
 		8694CF7624BB8FE1008B12BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K965454LM2;
+				DEVELOPMENT_TEAM = W7FLQV7B7S;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		8694CF7724BB8FE1008B12BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K965454LM2;
+				DEVELOPMENT_TEAM = W7FLQV7B7S;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
