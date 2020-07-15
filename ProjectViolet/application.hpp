@@ -13,8 +13,6 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#include "debugComponents.hpp"
-
 class Application
 {
 public:
@@ -47,9 +45,6 @@ public:
     
     // Contains the main game loop
     void mainLoop();
-    
-    // Utility function for logging information and errors to the console
-    void logMessage(std::string message, MessageSeverity severity);
     
     static const int WINDOW_WIDTH = 750, WINDOW_HEIGHT = 750;
     
