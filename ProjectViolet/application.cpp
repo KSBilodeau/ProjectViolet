@@ -33,49 +33,41 @@ void Application::free()
 bool Application::run()
 {
     bool runSuccess = true;
-    
-    ON_DEBUG(attachDebugger(*this);)
-    
-//    ON_DEBUG(startLoggingToFile();)
-    
-    if (!initLibraries())
+        
+    // Catches any errors from application loading
+    try
     {
-        ON_DEBUG(logMessage("Failed to initialize application libraries!", MessageSeverity::IrrecoverableError);)
-        runSuccess = false;
-    }
-    
-    if (!loadMedia())
-    {
-        ON_DEBUG(logMessage("Failed to load application resources!", MessageSeverity::IrrecoverableError);)
-        runSuccess = false;
-    }
-    
-    // Used to poll SDL's event queue
-    SDL_Event event;
-    
-    while (continueExecution)
-    {
-        while (SDL_PollEvent(&event))
+        // Initializes SDL and its sub-libraries
+        if (!initLibraries())
         {
-            if (event.type == SDL_QUIT)
-                continueExecution = false;
+            logMessage("Failed to initialize application libraries!", IrrecoverableError, __LINE__, __FILE_NAME__);
+            runSuccess = false;
         }
         
-        SDL_SetRenderDrawColor(mRenderer.get(), 0xFF, 0xFF, 0xFF, 0xFF);
-        SDL_RenderClear(mRenderer.get());
+        // Loads applications resources
+        if (!loadMedia())
+        {
+            logMessage("Failed to load application resources!", IrrecoverableError, __LINE__, __FILE_NAME__);
+            runSuccess = false;
+        }
+    }
+    catch (std::runtime_error e)
+    {
+        // Output the error to the console
+        std::cerr << e.what();
         
-        SDL_RenderPresent(mRenderer.get());
-        SDL_RenderClear(mRenderer.get());
+        stopApplication();
     }
     
-//    ON_DEBUG(stopLoggingToFile();)
+    mainLoop();
     
-    ON_DEBUG(detachDebugger();)
+    // Releases the library's resources
+    free();
     
     return runSuccess;
 }
 
-void Application::stopNextIteration()
+void Application::stopApplication()
 {
     // By setting the execution flag to false, the main loop will terminate
     // at the beginning of the next iteration
@@ -89,8 +81,8 @@ bool Application::initLibraries()
     // Initialize SDL with video and audio channels extensions enabled
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
     {
-        ON_DEBUG(logMessage("Failed to initialize SDL!", MessageSeverity::SevereError);)
-        ON_DEBUG(std::cout << "SDL Error: " << SDL_GetError() << '\n';)
+        ON_DEBUG(logMessage("Failed to initialize SDL!", SevereError, __LINE__, __FILE_NAME__);)
+        ON_DEBUG(logMessage(SDL_GetError(), SDLError, __LINE__, __FILE_NAME__);)
         
         success = false;
     }
@@ -101,8 +93,8 @@ bool Application::initLibraries()
         
         if (mWindow == nullptr)
         {
-            ON_DEBUG(logMessage("Failed to create the application's window!", MessageSeverity::SevereError);)
-            ON_DEBUG(std::cout << "SDL Error: " << SDL_GetError() << '\n';)
+            ON_DEBUG(logMessage("Failed to create the application's window!", SevereError, __LINE__, __FILE_NAME__);)
+            ON_DEBUG(logMessage(SDL_GetError(), SDLError, __LINE__, __FILE_NAME__);)
             
             success = false;
         }
@@ -113,8 +105,8 @@ bool Application::initLibraries()
             
             if (mRenderer == nullptr)
             {
-                ON_DEBUG(logMessage("Failed to create the application's renderer!", MessageSeverity::SevereError);)
-                ON_DEBUG(std::cout << "SDL Error: " << SDL_GetError() << '\n';)
+                ON_DEBUG(logMessage("Failed to create the application's renderer!", SevereError, __LINE__, __FILE_NAME__);)
+                ON_DEBUG(logMessage(SDL_GetError(), SDLError, __LINE__, __FILE_NAME__);)
                 
                 success = false;
             }
@@ -128,8 +120,8 @@ bool Application::initLibraries()
                 // Initialize SDL_image library with JPEG and PNG support
                 if (!(IMG_Init(imgFlags) & imgFlags))
                 {
-                    ON_DEBUG(logMessage("Failed to initialize SDL_image!", MessageSeverity::SevereError);)
-                    ON_DEBUG(std::cout << "SDL_image Error: " << IMG_GetError() << '\n';)
+                    ON_DEBUG(logMessage("Failed to initialize SDL_image!", SevereError, __LINE__, __FILE_NAME__);)
+                    ON_DEBUG(logMessage(IMG_GetError(), SDLImageError, __LINE__, __FILE_NAME__);)
                     
                     success = false;
                 }
@@ -145,4 +137,42 @@ bool Application::loadMedia()
     bool success = true;
     
     return success;
+}
+
+void Application::mainLoop()
+{
+    // Loops as long as the execution flag remains true
+    while (continueExecution)
+    {
+        handleInput();
+        
+        update();
+
+        renderFrame();
+    }
+}
+
+void Application::handleInput()
+{
+    // Gets the most recent event in the SDL event queue
+    while (SDL_PollEvent(&mEvent))
+    {
+        // If the user performs some form of QUIT operation, stop further application operation
+        if (mEvent.type == SDL_QUIT)
+            stopApplication();
+    }
+}
+
+void Application::update()
+{
+    
+}
+
+void Application::renderFrame()
+{
+    SDL_SetRenderDrawColor(mRenderer.get(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderClear(mRenderer.get());
+    
+    SDL_RenderPresent(mRenderer.get());
+    SDL_RenderClear(mRenderer.get());
 }

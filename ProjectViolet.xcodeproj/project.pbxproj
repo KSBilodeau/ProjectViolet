@@ -10,6 +10,7 @@
 		8694CF7224BB8FE1008B12BD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8694CF7124BB8FE1008B12BD /* main.cpp */; };
 		8694CF8524BB91A7008B12BD /* application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8694CF8324BB91A7008B12BD /* application.cpp */; };
 		869E033E24BF716E00B332D8 /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 869E033C24BF716E00B332D8 /* debug.cpp */; };
+		86EE51B324CF5429003AAE60 /* textureWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86EE51B124CF5429003AAE60 /* textureWrapper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		8694CF8424BB91A7008B12BD /* application.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = application.hpp; sourceTree = "<group>"; };
 		869E033C24BF716E00B332D8 /* debug.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = debug.cpp; sourceTree = "<group>"; };
 		869E033D24BF716E00B332D8 /* debug.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = debug.hpp; sourceTree = "<group>"; };
+		86EE51B124CF5429003AAE60 /* textureWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = textureWrapper.cpp; sourceTree = "<group>"; };
+		86EE51B224CF5429003AAE60 /* textureWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = textureWrapper.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,7 @@
 				8694CF8324BB91A7008B12BD /* application.cpp */,
 				869E033C24BF716E00B332D8 /* debug.cpp */,
 				8694CF7124BB8FE1008B12BD /* main.cpp */,
+				86EE51B124CF5429003AAE60 /* textureWrapper.cpp */,
 			);
 			name = sources;
 			sourceTree = "<group>";
@@ -112,6 +116,7 @@
 			children = (
 				8694CF8424BB91A7008B12BD /* application.hpp */,
 				869E033D24BF716E00B332D8 /* debug.hpp */,
+				86EE51B224CF5429003AAE60 /* textureWrapper.hpp */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 			files = (
 				8694CF8524BB91A7008B12BD /* application.cpp in Sources */,
 				869E033E24BF716E00B332D8 /* debug.cpp in Sources */,
+				86EE51B324CF5429003AAE60 /* textureWrapper.cpp in Sources */,
 				8694CF7224BB8FE1008B12BD /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +303,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7FLQV7B7S;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -309,6 +316,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8694CF8224BB90AA008B12BD /* conanbuildinfo.xcconfig */;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++2a";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7FLQV7B7S;
 				ENABLE_HARDENED_RUNTIME = YES;

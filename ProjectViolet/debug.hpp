@@ -13,8 +13,6 @@
 #include <stdio.h>
 #include <string>
 
-#include "application.hpp"
-
 #ifndef NDEBUG
 #define ON_DEBUG(x) do { x } while (0);
 #else
@@ -28,14 +26,15 @@ enum MessageSeverity
     SevereWarning,
     Error,
     SevereError,
-    IrrecoverableError
+    IrrecoverableError,
+    SDLError,
+    SDLImageError,
+    SDLFontError,
+    SDLMixerError
 };
 
 namespace
 {
-    // Application pointer in case application termination is neccessary
-    Application* mApplication = nullptr;
-
     // Stores the cout buffer before switching between file and console output mode
     std::streambuf* mBaseCoutBuffer = nullptr;
     
@@ -45,12 +44,6 @@ namespace
 
 namespace Debug
 {
-    // Gives the application pointer for use with debugging utility functions
-    void attachDebugger(Application &application);
-
-    // Cleans up debug namespace variables
-    void detachDebugger();
-
     // Utility function that starts console output logging
     void startLoggingToFile();
     
@@ -58,7 +51,7 @@ namespace Debug
     void stopLoggingToFile();
     
     // Utility function for logging messages to the console from outside the application class
-    void logMessage(std::string message, MessageSeverity severity);
+    void logMessage(std::string message, MessageSeverity severity, int line, std::string fileName);
 }
 
 #endif /* debug_hpp */

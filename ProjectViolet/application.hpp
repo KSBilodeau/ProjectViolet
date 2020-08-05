@@ -29,13 +29,16 @@ public:
     bool run();
     
     // Sets the application to stop at the end of its iteration
-    void stopNextIteration();
+    void stopApplication();
     
     // Starts the application and runs the main loop
     bool initLibraries();
     
     // Loads the application's resources
     bool loadMedia();
+    
+    // Polls SDL for game input
+    void handleInput();
     
     // Renders a single frame to the screen
     void renderFrame();
@@ -50,6 +53,8 @@ public:
     
 private:
     bool continueExecution;
+    
+    SDL_Event mEvent;
     
     std::shared_ptr<SDL_Renderer> mRenderer;
     
